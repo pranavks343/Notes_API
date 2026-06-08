@@ -16,4 +16,4 @@ def get_db()->Generator[Session, None, None]:
     try:
         yield db
     finally:
-        db.close()
+        db.close() #To return the database connection back to the pool so other requests can use it (prevent connection exhaustion).

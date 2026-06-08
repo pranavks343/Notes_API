@@ -8,7 +8,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.models.base import Base
 
 if TYPE_CHECKING:
-    from app.models.user import User  # noqa: F401
+    from app.models.user import User  # noqa: F401, to avoid circular imports while still allowing type hints
 
 
 class Note(Base):

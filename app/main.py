@@ -11,7 +11,7 @@ from app.db.session import engine
 
 # Base.metadata.create_all(bind=engine)
 
-deleted for alembic, which is now used for database migrations. Alembic uses the models to generate migration scripts, so we need to import them in alembic/env.py instead.
+deleted for alembic, which is now used for database migrations. Alembic uses the models to generate migration scripts, so we need to import them in alembic/env.py instead..
 """
 
 app = FastAPI(title=settings.app_name)
@@ -31,4 +31,4 @@ def health() -> dict[str, str]:
 
 
 
-app.include_router(api_router, prefix=settings.api_v1_prefix)
+app.include_router(api_router, prefix=settings.api_v1_prefix)       

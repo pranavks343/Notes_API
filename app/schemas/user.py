@@ -11,7 +11,6 @@ class UserCreate(BaseModel):
 
 
 class UserRead(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
 
     id: int
     email: EmailStr
@@ -20,4 +19,4 @@ class UserRead(BaseModel):
 
 
 class UserInDB(UserRead):
-    hashed_password: str
+    hashed_password: str 
