@@ -33,3 +33,12 @@ def create_refresh_token(subject: str | int) -> str:
         timedelta(days=settings.refresh_token_expire_days),
         "refresh",
     )
+
+
+
+def decode_token(token: str) -> dict:
+    return jwt.decode(
+        token,
+        settings.jwt_secret,
+        algorithms=[settings.jwt_algorithm],  # a list — you whitelist what you accept
+    )
