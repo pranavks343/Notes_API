@@ -7,4 +7,5 @@ python-jose[cryptography]
 
 alembic
 passlib[bcrypt]
-pydantic[email] 
+pydantic[email]
+python-multipart

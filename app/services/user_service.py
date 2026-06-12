@@ -3,7 +3,7 @@ from app.core.security import hash_password
 from app.models.users import User
 from app.repositories.user_repository import UserRepository
 from app.schemas.user import UserCreate
-
+from app.core.security import verify_password
 
 class UserAlreadyExistsError(Exception):
     """Raised when attempting to register an email that already exists."""
@@ -23,3 +23,12 @@ class UserService:
 
         hashed = hash_password(user_in.password)
         return self._repo.create(email=user_in.email, hashed_password=hashed) 
+    
+    def authenticate(self,email:str, password:str)->User|None:
+        user=self._repo.get_by_email(email)
+
+        if user and verify_password(password, user.hashed_password):
+            return user # authentication successful
+        return None # authentication failed
+    
+    
